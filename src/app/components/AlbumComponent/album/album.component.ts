@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from 'src/app/modelos/albumModelo/album';
 import { AlbumsService } from '../../../services/albumsService/albums.service';
 
 @Component({
@@ -9,7 +8,8 @@ import { AlbumsService } from '../../../services/albumsService/albums.service';
 })
 export class AlbumComponent implements OnInit {
   
-  albumes:[number,string,number,string,string,number,number][];
+  albumes:string[]=[];
+  id : number;
   constructor(private albumService:AlbumsService) { }
 
   ngOnInit(): void {
@@ -18,8 +18,10 @@ export class AlbumComponent implements OnInit {
 
   private getAllAlbums(){
     this.albumService.getAllAlbums().subscribe(albums =>{
-     this.albumes = albums.dataVector;
-     console.log(this.albumes)
+    albums.dataVector.forEach(data => {
+      this.albumes.push(data[4])
+      this.id = data[0]
+    })
     })
   }
 
