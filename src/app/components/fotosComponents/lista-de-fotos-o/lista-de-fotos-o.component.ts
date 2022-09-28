@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FotosServiceService } from '../../../services/fotosService/fotos-service.service';
-import { FotosOrganizadas } from '../../../modelos/fotosOrganizadas/fotos-organizadas';
+import { Foto } from 'src/app/modelos/foto/foto';
 
 @Component({
   selector: 'app-lista-de-fotos-o',
@@ -9,7 +9,7 @@ import { FotosOrganizadas } from '../../../modelos/fotosOrganizadas/fotos-organi
 })
 export class ListaDeFotosOComponent implements OnInit {
   
-  fotos:FotosOrganizadas[];
+  fotos:Foto[];
   
   constructor(private fotosService : FotosServiceService) { }
    
@@ -20,9 +20,11 @@ export class ListaDeFotosOComponent implements OnInit {
   private getAllFotos(){
     this.fotosService.getFotosOrganizadas()
     .subscribe(fotosOrganizadas =>{
-      this.fotos = fotosOrganizadas;
-      console.log(this.fotos);
+      this.fotos = fotosOrganizadas.flatMap(fotos =>{
+        return fotos.list
+      })
     })
+     
   }
 
 }

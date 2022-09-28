@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { ListaDeFotosOComponent } from './components/fotosComponents/lista-de-fotos-o/lista-de-fotos-o.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlbumComponent } from './components/AlbumComponent/album/album.component';
+import { ListaFotosAlbumComponent } from './components/listaFotoAlbumComponent/lista-fotos-album/lista-fotos-album.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDeFotosOComponent,
-    AlbumComponent
+    AlbumComponent,
+    ListaFotosAlbumComponent
   ],
   imports: [
     BrowserModule,

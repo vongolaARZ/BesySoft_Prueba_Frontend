@@ -1,7 +1,12 @@
 <div class="card" style="width: 18rem;" *ngFor="let album of albumes" >
-    <img class="card-img-top" src="http://192.168.0.109{{album}}" alt="Card image cap">
+    <img class="card-img-top" src="http://192.168.0.109{{album.fotoPortada}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"></h5>
-      <a href="http://192.168.0.109/albums/listPhoto/{{id}}" class="btn btn-primary"></a>
+      <a href="http://localhost:4200/albums/{{album.id}}" class="btn btn-primary">{{album.titulo}}</a>
     </div>
   </div>
+
+
+
+
+ 

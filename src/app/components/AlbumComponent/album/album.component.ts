@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlbumsService } from '../../../services/albumsService/albums.service';
+import { CardAlbum } from '../../../modelos/albumModelo/card-album';
 
 @Component({
   selector: 'app-album',
@@ -8,8 +9,7 @@ import { AlbumsService } from '../../../services/albumsService/albums.service';
 })
 export class AlbumComponent implements OnInit {
   
-  albumes:string[]=[];
-  id : number;
+  albumes:CardAlbum[]=[];
   constructor(private albumService:AlbumsService) { }
 
   ngOnInit(): void {
@@ -19,8 +19,7 @@ export class AlbumComponent implements OnInit {
   private getAllAlbums(){
     this.albumService.getAllAlbums().subscribe(albums =>{
     albums.dataVector.forEach(data => {
-      this.albumes.push(data[4])
-      this.id = data[0]
+      this.albumes.push(new CardAlbum(data[0],data[1],data[4]))
     })
     })
   }
